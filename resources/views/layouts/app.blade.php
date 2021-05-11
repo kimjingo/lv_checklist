@@ -50,7 +50,7 @@
         </li> -->
         <!-- end of theme -->
 
-        <li class="c-sidebar-nav-title">Components</li>
+        <li class="c-sidebar-nav-title">Menus</li>
         <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
             <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
                 <svg class="c-sidebar-nav-icon">

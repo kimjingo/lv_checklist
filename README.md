@@ -83,7 +83,16 @@ artisan make:migration add_admin_to_user_table
 artisan migrate
 edit user.fillable
 
-create admin user by using tinker
-(artisan make:seeder UserSeeder)
+(
+    create admin user by using tinker
+    OR
+    artisan make:seeder UserSeeder
+    # edit UserSeeder & Databaseseed
+    artisan migrate:refresh --seed
+    
+    artisan db:seed --class=UserSeeder
+)
+
 artisan make:request StoreChecklistGroupRequest
 artisan make:request StoreChecklistRequest
+

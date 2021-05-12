@@ -44,6 +44,45 @@
                     onclick="return confirm('Are you sure?');"> Delete</button>
 
             </form>
+
+            <hr />
+
+            <h2>{{ __('List of Task') }}</h2>
+                <div class="card">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <form action="{{ route('admin.checklists.tasks.store', [$checklist]) }}" method="POST">
+                    @csrf
+                    <div class="card-header"><strong>{{ __('New Task') }}</strong> <small></small></div>
+
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input class="form-control" name="name" type="text" placeholder="{{ __('Task name') }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Description</label>
+                                    <textarea class="form-control" name="description" row="5"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="card-footer">
+                        <button class="btn btn-sm btn-primary" type="submit"> Save</button>
+                    </div>
+                </form>
+                </div>
         </div>
     </div>
 </div>

@@ -96,3 +96,5 @@ edit user.fillable
 artisan make:request StoreChecklistGroupRequest
 artisan make:request StoreChecklistRequest
 
+artisan make:model Task -m
+artisan make:controller TaskController --resource

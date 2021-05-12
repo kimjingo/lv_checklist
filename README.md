@@ -63,6 +63,27 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## cli
 
+laravel new checklist
+composer require laravel/ui
+php artisan ui bootstrap --auth
+npm install && npm run dev
+artian migrate
+
+git init ....
+
+artisan make:controller Admin/PageController --resource
+
 artisan make:middleware IsAdmin
+edit IsAdmin.php
+add it to App/Http/Kernel.php
+
+artisan make:controller Admin/PageController --resource
+
+artisan make:migration add_admin_to_user_table
+artisan migrate
+edit user.fillable
+
+create admin user by using tinker
+(artisan make:seeder UserSeeder)
 artisan make:request StoreChecklistGroupRequest
 artisan make:request StoreChecklistRequest

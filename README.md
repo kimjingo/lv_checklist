@@ -100,3 +100,17 @@ artisan make:model Task -m
 artisan make:controller TaskController --resource
 
 artisan make:request StoreTaskRequest
+
+> part 4b : livewire
+artisan make:migration add_position_to_tasks_table
+composer require livewire/livewire
+artisan make:livewire TasksTable
+
+p5 : ckeditor
+
+part 6 : docblocks
+artisan stub:publish
+# modify controller with model
+artisan make:controller Admin/PageController --force --model=Page
+
+p7 : seed

@@ -49,10 +49,44 @@
 
             <h2>{{ __('List of Task') }}</h2>
                 <div class="card">
-                @if ($errors->any())
+                    <div class="card-header"><i class="fa fa-align-justify"></i> {{ __('List of Task') }}</div>
+                    <div class="card-body">
+                        <table class="table table-responsive-sm">
+                            <tbody>
+                            @foreach($checklist->tasks as $task)
+                                <tr>
+                                    <td>{{ $task->name }}</td>
+                                    <td>{{ $task->description }}</td>
+                                    <td>
+                                        <a class="btn btn-sm btn-primary" href="{{ route('admin.checklists.tasks.edit', [$checklist, $task]) }}">{{ __('Edit') }}</a>
+                                        <form style="display:inline-block;" action="{{ route('admin.checklists.tasks.destroy', [$checklist, $task] ) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-sm btn-danger" type="submit"
+                                                onclick="return confirm('Are you sure?');"> Delete</button>
+
+                                        </form>
+                                    
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                @if ($errors->storetask->any())
                     <div class="alert alert-danger">
                         <ul>
-                            @foreach ($errors->all() as $error)
+                            @foreach ($errors->storetask->all() as $error)
                                 <li>{{ $error }}</li>
                             @endforeach
                         </ul>
@@ -67,11 +101,11 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input class="form-control" name="name" type="text" placeholder="{{ __('Task name') }}">
+                                    <input value="{{ old('name') }}" class="form-control" name="name" type="text" placeholder="{{ __('Task name') }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Description</label>
-                                    <textarea class="form-control" name="description" row="5"></textarea>
+                                    <textarea class="form-control" name="description" row="5">{{ old('description') }}</textarea>
                                 </div>
                             </div>
                         </div>

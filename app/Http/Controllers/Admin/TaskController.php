@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreTaskRequest;
+use App\Models\ChecklistGroup;
+use App\Models\Checklist;
+use App\Models\Task;
 
 class TaskController extends Controller
 {
@@ -33,9 +37,13 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTaskRequest $request, Checklist $checklist)
     {
-        //
+        $checklist->tasks()->create($request->validated());
+
+        return redirect()->route('admin.checklist_groups.checklists.edit', [
+            $checklist->checklist_group_id, $checklist
+        ]);
     }
 
     /**
@@ -55,9 +63,9 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Checklist $checklist, Task $task)
     {
-        //
+        return view('admin.checklists.tasks.edit', compact('checklist', 'task'));
     }
 
     /**
@@ -67,9 +75,13 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreTaskRequest $request, Checklist $checklist, Task $task)
     {
-        //
+        $task->update($request->validated());
+        return redirect()->route('admin.checklist_groups.checklists.edit', [
+            $checklist->checklist_group_id, $checklist
+        ]);
+
     }
 
     /**
@@ -78,8 +90,11 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Checklist $checklist, Task $task)
     {
-        //
+        $task->delete();
+        return redirect()->route('admin.checklist_groups.checklists.edit', [
+            $checklist->checklist_group_id, $checklist
+        ]);
     }
 }

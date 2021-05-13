@@ -84,13 +84,13 @@ artisan migrate
 edit user.fillable
 
 (
-    create admin user by using tinker
-    OR
-    artisan make:seeder UserSeeder
-    # edit UserSeeder & Databaseseed
-    artisan migrate:refresh --seed
-    
+create admin user by using tinker
+OR
+artisan make:seeder UserSeeder # edit UserSeeder & Databaseseed
+artisan migrate:refresh --seed
+
     artisan db:seed --class=UserSeeder
+
 )
 
 artisan make:request StoreChecklistGroupRequest
@@ -98,3 +98,5 @@ artisan make:request StoreChecklistRequest
 
 artisan make:model Task -m
 artisan make:controller TaskController --resource
+
+artisan make:request StoreTaskRequest

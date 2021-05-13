@@ -51,35 +51,15 @@
                 <div class="card">
                     <div class="card-header"><i class="fa fa-align-justify"></i> {{ __('List of Task') }}</div>
                     <div class="card-body">
-                        <table class="table table-responsive-sm">
-                            <tbody>
-                            @foreach($checklist->tasks as $task)
-                                <tr>
-                                    <td>{{ $task->name }}</td>
-                                    <td>{{ $task->description }}</td>
-                                    <td>
-                                        <a class="btn btn-sm btn-primary" href="{{ route('admin.checklists.tasks.edit', [$checklist, $task]) }}">{{ __('Edit') }}</a>
-                                        <form style="display:inline-block;" action="{{ route('admin.checklists.tasks.destroy', [$checklist, $task] ) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-sm btn-danger" type="submit"
-                                                onclick="return confirm('Are you sure?');"> Delete</button>
-
-                                        </form>
-                                    
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                        <ul class="pagination">
+                        @livewire('tasks-table', ['checklist' => $checklist])
+                        <!-- <ul class="pagination">
                             <li class="page-item"><a class="page-link" href="#">Prev</a></li>
                             <li class="page-item active"><a class="page-link" href="#">1</a></li>
                             <li class="page-item"><a class="page-link" href="#">2</a></li>
                             <li class="page-item"><a class="page-link" href="#">3</a></li>
                             <li class="page-item"><a class="page-link" href="#">4</a></li>
                             <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
+                        </ul> -->
                     </div>
                 </div>
                 <div class="card">

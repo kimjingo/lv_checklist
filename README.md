@@ -110,7 +110,15 @@ p5 : ckeditor
 
 part 6 : docblocks
 artisan stub:publish
-# modify controller with model
-artisan make:controller Admin/PageController --force --model=Page
 
 p7 : seed
+artisan make:request UpdateChecklistGroupRequest
+
+# modify controller with model
+artisan make:controller Admin/PageController --force --model=Page
+artisan make:migration create_pages_table
+artisan migrate
+artisan make:seeder PagesSeeder
+artisan db:seed --class=PagesSeeder
+artisan make:request StorePageRequest
+artisan make:request UpdatePageRequest

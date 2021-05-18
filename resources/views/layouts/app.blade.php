@@ -20,6 +20,7 @@
 
 <div class="c-wrapper c-fixed-components">
     <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
+
         <!-- <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
             <svg class="c-icon c-icon-lg">
                 <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
@@ -41,34 +42,40 @@
             <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="#">Settings</a></li>
         </ul> -->
         <ul class="c-header-nav ml-auto mr-4">
+            <li class="c-header-nav-item">
+                <a href="{{ route('consultation') }}" class="c-header-nav-link">{{ __('Get Consulation') }}</a>
+            </li>
             <li class="c-header-nav-item d-md-down-none mx-2">
-                <a class="c-header-nav-link" href="#">
+                <a class="c-header-nav-link" href="{{ route('welcome') }}">
                     <svg class="c-icon">
-                        <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-bell') }}"></use>
+                        <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-settings') }}"></use>
                     </svg>
                 </a>
             </li>
-            <li class="c-header-nav-item d-md-down-none mx-2">
+            <!-- <li class="c-header-nav-item d-md-down-none mx-2">
                 <a class="c-header-nav-link" href="#">
                     <svg class="c-icon">
                         <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-list-rich') }}"></use>
                     </svg>
                 </a>
-            </li>
-            <li class="c-header-nav-item d-md-down-none mx-2">
+            </li> -->
+            <!-- <li class="c-header-nav-item d-md-down-none mx-2">
                 <a class="c-header-nav-link" href="#">
                     <svg class="c-icon">
                         <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-envelope-open') }}"></use>
                     </svg>
                 </a>
-            </li>
+            </li> -->
             <li class="c-header-nav-item dropdown">
                 <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    <div class="c-avatar"><img class="c-avatar-img" src="assets/img/avatars/6.jpg" alt="user@email.com"></div>
+                    <!-- <div class="c-avatar"><img class="c-avatar-img" src="assets/img/avatars/6.jpg" alt="user@email.com"></div> -->
+                    <svg class="c-icon">
+                        <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-user') }}"></use>
+                    </svg>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right pt-0">
                     <div class="dropdown-header bg-light py-2"><strong>Account</strong></div>
-                    <a class="dropdown-item" href="#">
+                    <!-- <a class="dropdown-item" href="#">
                         <svg class="c-icon mr-2">
                             <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-bell') }}"></use>
                         </svg> Updates<span class="badge badge-info ml-auto">42</span>
@@ -114,12 +121,18 @@
                         <svg class="c-icon mr-2">
                             <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-lock-locked') }}"></use>
                         </svg> Lock Account
-                    </a>
-                    <a class="dropdown-item" href="#">
+                    </a> -->
+                    <a class="dropdown-item" href="#"
+                        onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();"
+                    >
                         <svg class="c-icon mr-2">
                             <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-account-logout') }}"></use>
                         </svg> Logout
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </li>
         </ul>

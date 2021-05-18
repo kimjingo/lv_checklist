@@ -8,14 +8,14 @@
         </svg>
     </div> -->
     <ul class="c-sidebar-nav ps">
-        <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('home') }}">
+        <!-- <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="{{ route('welcome') }}">
             <svg class="c-sidebar-nav-icon">
                 <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer') }}"></use>
             </svg> Dashboard
-            <!-- <span class="badge badge-info">NEW</span> -->
+            <span class="badge badge-info">NEW</span>
             </a>
-        </li>
+        </li> -->
         <!-- theme -->
         <!-- <li class="c-sidebar-nav-title">Theme</li>
         <li class="c-sidebar-nav-item">

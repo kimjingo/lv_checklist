@@ -102,9 +102,9 @@ artisan make:controller TaskController --resource
 artisan make:request StoreTaskRequest
 
 > part 4b : livewire
-artisan make:migration add_position_to_tasks_table
-composer require livewire/livewire
-artisan make:livewire TasksTable
+> artisan make:migration add_position_to_tasks_table
+> composer require livewire/livewire
+> artisan make:livewire TasksTable
 
 p5 : ckeditor
 
@@ -115,6 +115,7 @@ p7 : seed
 artisan make:request UpdateChecklistGroupRequest
 
 # modify controller with model
+
 artisan make:controller Admin/PageController --force --model=Page
 artisan make:migration create_pages_table
 artisan migrate
@@ -122,3 +123,6 @@ artisan make:seeder PagesSeeder
 artisan db:seed --class=PagesSeeder
 artisan make:request StorePageRequest
 artisan make:request UpdatePageRequest
+
+p8 : welcome page and top-righ menu links
+php artisan make:controller PageController --resource

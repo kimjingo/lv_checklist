@@ -23,7 +23,7 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input class="form-control" name="name" type="text" placeholder="Enter your name">
+                                    <input value="{{ old('name') }}" class="form-control" name="name" type="text" placeholder="Enter your name">
                                 </div>
                             </div>
                         </div>

@@ -1,160 +1,78 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
- <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <base href="./">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+        <meta name="author" content="Łukasz Holeczek">
+        <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+        @yield('meta')
+        <title>{{ config('app.name', 'checklist') }}</title>
+        <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('assets/favicon/apple-icon-57x57.png') }}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('assets/favicon/apple-icon-60x60.png') }}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('assets/favicon/apple-icon-72x72.png') }}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/favicon/apple-icon-76x76.png') }}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('assets/favicon/apple-icon-114x114.png') }}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('assets/favicon/apple-icon-120x120.png') }}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('assets/favicon/apple-icon-144x144.png') }}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('assets/favicon/apple-icon-152x152.png') }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/favicon/apple-icon-180x180.png') }}">
+        <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/favicon/android-icon-192x192.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/favicon/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('assets/favicon/favicon-96x96.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/favicon/favicon-16x16.png') }}">
+        <link rel="manifest" href="{{ asset('assets/favicon/manifest.json') }}">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="{{ asset('assets/favicon/ms-icon-144x144.png') }}">
+        <meta name="theme-color" content="#ffffff">
 
-    <!-- CoreUI CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/css/perfect-scrollbar.min.css" integrity="sha512-n+g8P11K/4RFlXnx2/RW1EZK25iYgolW6Qn7I0F96KxJibwATH3OoVCQPh/hzlc4dWAwplglKX8IVNVMWUUdsw==" crossorigin="anonymous" />
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
-     <title>{{ config('app.name', 'Laravel') }}</title>
-     @livewireStyles
- </head>
- <body class="c-app">
- <!-- side bar -->
+        <link href="{{ asset('vendors/@coreui/chartjs/css/coreui-chartjs.css') }}" rel="stylesheet">
+        <meta name="robots" content="noindex">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-118965717-1');
+        </script>
+        @yield('style')
+    </head>
+    <body class="c-app">
+        <!-- side bar -->
+        @include('partials.sidebar')
+        <!-- end of side bar -->
+        <div class="c-wrapper c-fixed-components">
+            @include('partials.header')
+            <div class="c-body">
+                <main class="c-main">
+                    <div class="container-fluid">
+                        <div class="fade-in">
+                            @yield('content')
+                        </div>
+                    </div>
+                </main>
+                @include('partials.footer')
+            </div>
+        </div>
 
-    @include('partials.sidebar')
-<!-- end of side bar -->
+        <script src="{{ asset('vendors/@coreui/coreui/js/coreui.bundle.min.js') }}"></script>
+        <!--[if IE]><!-->
+        <script src="{{ asset('vendors/@coreui/icons/js/svgxuse.min.js') }}"></script>
+        <!--<![endif]-->
 
-<div class="c-wrapper c-fixed-components">
-    <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
+        <script src="{{ asset('vendors/@coreui/chartjs/js/coreui-chartjs.bundle.js') }}"></script>
+        <script src="{{ asset('vendors/@coreui/utils/js/coreui-utils.js') }}"></script>
+        <!-- <script src="js/main.js"></script> -->
+        @yield('script')
+        @livewireScripts
+        <script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v0.x.x/dist/livewire-sortable.js"></script>
 
-        <!-- <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
-            <svg class="c-icon c-icon-lg">
-                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
-            </svg>
-        </button>
-        <a class="c-header-brand d-lg-none" href="#">
-            <svg width="118" height="46" alt="CoreUI Logo">
-                <use xlink:href="assets/brand/coreui.svg#full"></use>
-            </svg>
-        </a>
-        <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar" data-class="c-sidebar-lg-show" responsive="true">
-            <svg class="c-icon c-icon-lg">
-                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
-            </svg>
-        </button>
-        <ul class="c-header-nav d-md-down-none">
-            <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="#">Dashboard</a></li>
-            <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="#">Users</a></li>
-            <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="#">Settings</a></li>
-        </ul> -->
-        <ul class="c-header-nav ml-auto mr-4">
-            <li class="c-header-nav-item">
-                <a href="{{ route('consultation') }}" class="c-header-nav-link">{{ __('Get Consulation') }}</a>
-            </li>
-            <li class="c-header-nav-item d-md-down-none mx-2">
-                <a class="c-header-nav-link" href="{{ route('welcome') }}">
-                    <svg class="c-icon">
-                        <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-settings') }}"></use>
-                    </svg>
-                </a>
-            </li>
-            <!-- <li class="c-header-nav-item d-md-down-none mx-2">
-                <a class="c-header-nav-link" href="#">
-                    <svg class="c-icon">
-                        <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-list-rich') }}"></use>
-                    </svg>
-                </a>
-            </li> -->
-            <!-- <li class="c-header-nav-item d-md-down-none mx-2">
-                <a class="c-header-nav-link" href="#">
-                    <svg class="c-icon">
-                        <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-envelope-open') }}"></use>
-                    </svg>
-                </a>
-            </li> -->
-            <li class="c-header-nav-item dropdown">
-                <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    <!-- <div class="c-avatar"><img class="c-avatar-img" src="assets/img/avatars/6.jpg" alt="user@email.com"></div> -->
-                    <svg class="c-icon">
-                        <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-user') }}"></use>
-                    </svg>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right pt-0">
-                    <div class="dropdown-header bg-light py-2"><strong>Account</strong></div>
-                    <!-- <a class="dropdown-item" href="#">
-                        <svg class="c-icon mr-2">
-                            <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-bell') }}"></use>
-                        </svg> Updates<span class="badge badge-info ml-auto">42</span>
-                    </a>
-                    <a class="dropdown-item" href="#">
-                        <svg class="c-icon mr-2">
-                            <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-envelope-open') }}"></use>
-                        </svg> Messages<span class="badge badge-success ml-auto">42</span>
-                    </a>
-                    <a class="dropdown-item" href="#">
-                        <svg class="c-icon mr-2">
-                            <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-task') }}"></use>
-                        </svg> Tasks<span class="badge badge-danger ml-auto">42</span>
-                    </a>
-                    <a class="dropdown-item" href="#">
-                        <svg class="c-icon mr-2">
-                            <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-comment-square') }}"></use>
-                        </svg> Comments<span class="badge badge-warning ml-auto">42</span>
-                    </a>
-                    <div class="dropdown-header bg-light py-2"><strong>Settings</strong></div>
-                    <a class="dropdown-item" href="#">
-                        <svg class="c-icon mr-2">
-                            <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-user') }}"></use>
-                        </svg> Profile
-                    </a>
-                    <a class="dropdown-item" href="#">
-                        <svg class="c-icon mr-2">
-                            <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-settings') }}"></use>
-                        </svg> Settings
-                    </a>
-                    <a class="dropdown-item" href="#">
-                        <svg class="c-icon mr-2">
-                            <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-credit-card') }}"></use>
-                        </svg> Payments<span class="badge badge-secondary ml-auto">42</span>
-                    </a>
-                    <a class="dropdown-item" href="#">
-                        <svg class="c-icon mr-2">
-                            <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-file') }}"></use>
-                        </svg> Projects<span class="badge badge-primary ml-auto">42</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                        <svg class="c-icon mr-2">
-                            <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-lock-locked') }}"></use>
-                        </svg> Lock Account
-                    </a> -->
-                    <a class="dropdown-item" href="#"
-                        onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();"
-                    >
-                        <svg class="c-icon mr-2">
-                            <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-account-logout') }}"></use>
-                        </svg> Logout
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </div>
-            </li>
-        </ul>
-
-    </header>
-
-    <!-- end of header -->
-
-    <div class="c-body">
-        <main class="c-main">
-            @yield('content')
-        </main>
-    </div>
-</div>
- <!-- Optional JavaScript -->
- <!-- Popper.js first, then CoreUI JS -->
- <script src="https://unpkg.com/@popperjs/core@2"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/perfect-scrollbar.min.js" integrity="sha512-yUNtg0k40IvRQNR20bJ4oH6QeQ/mgs9Lsa6V+3qxTj58u2r+JiAYOhOW0o+ijuMmqCtCEg7LZRA+T4t84/ayVA==" crossorigin="anonymous"></script>
- <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js"></script>
- @livewireScripts
- <script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v0.x.x/dist/livewire-sortable.js"></script>
- <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
- @yield('script')
- </body>
+    </body>
 </html>

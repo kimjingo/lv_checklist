@@ -7,8 +7,15 @@
                 <td>{{ $task->name }}</td>
                 <td>{!! $task->description !!}</td>
                 <td>
-                    <a class="btn btn-sm btn-primary" href="{{ route('admin.checklists.tasks.edit', [$checklist, $task]) }}">{{ __('Edit') }}</a>
-                    <form style="display:inline-block;" action="{{ route('admin.checklists.tasks.destroy', [$checklist, $task] ) }}" method="POST">
+                    <a class="btn btn-sm btn-primary" 
+                        href="{{ route('admin.checklists.tasks.edit', [$checklist, $task]) }}"
+                    >
+                        {{ __('Edit') }}
+                    </a>
+                    <form style="display:inline-block;" 
+                        action="{{ route('admin.checklists.tasks.destroy', [$checklist, $task] ) }}" 
+                        method="POST"
+                    >
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-sm btn-danger" type="submit"

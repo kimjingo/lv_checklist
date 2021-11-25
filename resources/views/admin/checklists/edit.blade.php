@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="card-footer">
-                        <button class="btn btn-sm btn-primary" type="submit"> Save</button>
+                        <button class="btn btn-sm btn-primary" type="submit"> Save Checklist</button>
                     </div>
                 </form>
             </div>
@@ -106,6 +106,9 @@
 <script>
     ClassicEditor
         .create( document.querySelector( '#task-textarea' ) )
+        .then(editor => {
+            console.log(editor)
+        })
         .catch( error => {
             console.error( error );
         } );

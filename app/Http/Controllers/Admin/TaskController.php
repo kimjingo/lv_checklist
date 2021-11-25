@@ -14,7 +14,8 @@ use App\Models\Task;
 class TaskController extends Controller
 {
 
-    public function store(StoreTaskRequest $request, Checklist $checklist) : redirectResponse
+    public function store(StoreTaskRequest $request, Checklist $checklist)
+    //  : redirectResponse
     {
         $position = $checklist->tasks()->max('position') + 1;
         $checklist->tasks()->create($request->validated()+['position'=>$position]);
@@ -24,12 +25,14 @@ class TaskController extends Controller
         ]);
     }
 
-    public function edit(Checklist $checklist, Task $task) : view
+    public function edit(Checklist $checklist, Task $task)
+    //  : view
     {
         return view('admin.checklists.tasks.edit', compact('checklist', 'task'));
     }
 
-    public function update(StoreTaskRequest $request, Checklist $checklist, Task $task) : redirectResponse
+    public function update(StoreTaskRequest $request, Checklist $checklist, Task $task)
+    //  : redirectResponse
     {
         $task->update($request->validated());
         return redirect()->route('admin.checklist_groups.checklists.edit', [

@@ -8,14 +8,15 @@ use App\Http\Requests\StoreTaskRequest;
 use App\Models\ChecklistGroup;
 use App\Models\Checklist;
 use App\Models\Task;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Contracts\View\View;
 
 // use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
 
-    public function store(StoreTaskRequest $request, Checklist $checklist)
-    //  : redirectResponse
+    public function store(StoreTaskRequest $request, Checklist $checklist) : RedirectResponse
     {
         $position = $checklist->tasks()->max('position') + 1;
         $checklist->tasks()->create($request->validated()+['position'=>$position]);
@@ -25,8 +26,7 @@ class TaskController extends Controller
         ]);
     }
 
-    public function edit(Checklist $checklist, Task $task)
-    //  : view
+    public function edit(Checklist $checklist, Task $task) : View
     {
         return view('admin.checklists.tasks.edit', compact('checklist', 'task'));
     }

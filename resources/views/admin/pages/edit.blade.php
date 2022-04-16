@@ -15,6 +15,9 @@
                     </div>
                 @endif
 
+                @if(session('success'))
+                    <div class="alert alert-info">{{ session('success') }}</div>
+                @endif
                 <form action="{{ route('admin.pages.update', $page) }}" method="POST">
                     @csrf
                     @method('PUT')
@@ -31,7 +34,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="content">Content</label>
-                                    <textarea class="form-control" name="content" rows="5" >{{ $page->content }}</textarea>
+                                    <textarea class="form-control" name="content" rows="5" id=content-textarea>{{ $page->content }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -44,16 +47,20 @@
                 </form>
             </div>
 
-            <form action="{{ route('admin.pages.destroy', $page ) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button class="btn btn-sm btn-danger" type="submit"
-                    onclick="return confirm('Are you sure?');"> Delete</button>
-
-            </form>
-
     
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#content-textarea' ) )
+        .then(editor => {
+            console.log(editor)
+        })
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 @endsection

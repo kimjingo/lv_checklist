@@ -43,25 +43,12 @@ class ChecklistGroupController extends Controller
         return view('admin.checklist_groups.edit', compact('checklistGroup'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  StoreChecklistGroupRequest $request
-     * @param  ChecklistGroup $checklistGroup
-     * @return \Illuminate\Http\Response
-     */
     public function update(UpdateChecklistGroupRequest $request, ChecklistGroup $checklistGroup)
     {
         $checklistGroup->update($request->validated());
         return redirect()->route('home');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  ChecklistGroup $checklistGroup
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(ChecklistGroup $checklistGroup)
     {
         $checklistGroup->delete();

@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="content">Content</label>
-                                    <textarea class="form-control" name="content" rows="5" id=content-textarea>{{ $page->content }}</textarea>
+                                    <textarea class="form-control" name="content" rows="5" id=task-textarea>{{ $page->content }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -53,14 +53,5 @@
 </div>
 @endsection
 @section('script')
-<script>
-    ClassicEditor
-        .create( document.querySelector( '#content-textarea' ) )
-        .then(editor => {
-            console.log(editor)
-        })
-        .catch( error => {
-            console.error( error );
-        } );
-</script>
+    @include('admin.ckeditor')
 @endsection

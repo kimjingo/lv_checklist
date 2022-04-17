@@ -34,7 +34,6 @@
         <link href="{{ asset('vendors/@coreui/chartjs/css/coreui-chartjs.css') }}" rel="stylesheet">
         <meta name="robots" content="noindex">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-1"></script>
         <script>
             window.dataLayer = window.dataLayer || [];

@@ -28,7 +28,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Description</label>
-                                    <textarea class="form-control" name="description" row="5">{{ $task->description }}</textarea>
+                                    <textarea class="form-control" name="description" row="5" id="task-textarea">{{ $task->description }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -51,4 +51,7 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+    @include('admin.ckeditor')
 @endsection

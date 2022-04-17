@@ -20,4 +20,7 @@ class PageController extends Controller
 
         return view('page', compact('page'));
     }
+    public function show(){
+        return "Hi";
+    }
 }

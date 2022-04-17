@@ -22,6 +22,7 @@ class User extends Authenticatable
         'password',
         'website',
         'is_admin',
+        'last_action_at',
     ];
 
     /**
@@ -42,4 +43,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getAvatarAttribute()
+    {
+        return "https://ui-avatars.com/api/?name=" . $this->name;
+        return "https://i.pravatar.cc/40?u=" . $this->email;
+    }
 }

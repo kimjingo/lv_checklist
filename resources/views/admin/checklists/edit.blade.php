@@ -103,14 +103,5 @@
 @endsection
 
 @section('script')
-<script>
-    ClassicEditor
-        .create( document.querySelector( '#task-textarea' ) )
-        .then(editor => {
-            console.log(editor)
-        })
-        .catch( error => {
-            console.error( error );
-        } );
-</script>
+    @include('admin.ckeditor')
 @endsection

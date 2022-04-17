@@ -22,6 +22,7 @@ class User extends Authenticatable
         'password',
         'website',
         'is_admin',
+        'last_action_at',
     ];
 
     /**

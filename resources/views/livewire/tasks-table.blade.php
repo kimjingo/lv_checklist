@@ -4,6 +4,18 @@
         <tbody>
         @foreach($tasks as $task)
             <tr wire:sortable.item="{{ $task->id }}" wire:key="task-{{ $task->id }}">
+                <td>
+                    @if($task->position > 1)
+                    <a href="#" wire:click.prevent="task_up({{$task->id}})">
+                        &uarr;
+                    </a>
+                    @endif
+                    @if($task->position == $tasks->max('position'))
+                    <a href="#" wire:click.prevent="task_down({{$task->id}})">
+                        &darr;
+                    </a>
+                    @endif
+                </td>
                 <td>{{ $task->name }}</td>
                 <td>{!! $task->description !!}</td>
                 <td>

@@ -16,7 +16,11 @@ class Task extends Model implements HasMedia
         'checklist_id', 
         'name', 
         'description', 
-        'position'
+        'position',
+        'user_id',
+        'task_id',
+        'position',
+        'completed_at',
     ];
     
     public function registerMediaConversions(Media $media = null): void

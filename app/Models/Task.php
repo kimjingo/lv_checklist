@@ -21,6 +21,7 @@ class Task extends Model implements HasMedia
         'task_id',
         'position',
         'completed_at',
+        'reminder_at'
     ];
     
     public function registerMediaConversions(Media $media = null): void
@@ -29,5 +30,8 @@ class Task extends Model implements HasMedia
               ->width(368)
               ->height(232)
               ->sharpen(10);
+    }
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

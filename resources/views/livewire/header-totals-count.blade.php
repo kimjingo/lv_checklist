@@ -11,7 +11,7 @@
                         <div class="text-medium-emphasis">Visits</div>
                         <div class="fw-semibold">29.703 Users (40%)</div>
                         <div class="progress progress-thin mt-2">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     <div class="col mb-sm-2 mb-0">
